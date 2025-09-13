@@ -10,8 +10,8 @@
   "scripts": {
     "build-meet": "turbo build --filter @microboat/meet",
     "dev-meet": "turbo dev --filter @microboat/meet",
-    "build-dashboard": "turbo build --filter @microboat/dashboard",
-    "dev-dashboard": "turbo dev --filter @microboat/dashboard",
+    "build-acme": "turbo build --filter @microboat/acme",
+    "dev-acme": "turbo dev --filter @microboat/acme",
     "lint": "turbo lint",
     "format": "turbo format",
     "clean": "turbo clean",
