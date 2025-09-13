@@ -8,6 +8,7 @@
     "node": "22.x"
   },
   "scripts": {
+    "build": "turbo build",
     "build-meet": "turbo build --filter @microboat/meet",
     "dev-meet": "turbo dev --filter @microboat/meet",
     "build-acme": "turbo build --filter @microboat/acme",
