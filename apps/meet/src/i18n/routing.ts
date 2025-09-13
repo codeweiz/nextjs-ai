@@ -1,5 +1,5 @@
 import { defineRouting } from "next-intl/routing";
-import { appConfig } from "@microboat/meet/lib/config";
+import { appConfig } from "@microboat/meet/config";
 
 export const routing = defineRouting({
 	locales: Object.keys(appConfig.i18n.locales),
