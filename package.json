@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "MicroBoat Next.js Full Stack AI Project powered by turbo",
   "private": true,
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@8.15.4",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
