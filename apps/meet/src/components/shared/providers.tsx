@@ -5,31 +5,31 @@ import { SessionProvider } from "@microboat/meet/components/shared/session-provi
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+	variable: "--font-geist-sans",
+	subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+	variable: "--font-geist-mono",
+	subsets: ["latin"],
 });
 
 export async function AppProviders({
-  children,
-  locale,
+	children,
+	locale,
 }: PropsWithChildren<{ locale: string }>) {
-  return (
-    <html lang={locale} suppressHydrationWarning>
-      <head></head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-screen overflow-x-hidden`}
-      >
-        <ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
-          <ApiClientProvider>
-            <SessionProvider>{children}</SessionProvider>
-          </ApiClientProvider>
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang={locale} suppressHydrationWarning>
+			<head></head>
+			<body
+				className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-screen overflow-x-hidden`}
+			>
+				<ThemeProvider attribute="class" enableSystem disableTransitionOnChange>
+					<ApiClientProvider>
+						<SessionProvider>{children}</SessionProvider>
+					</ApiClientProvider>
+				</ThemeProvider>
+			</body>
+		</html>
+	);
 }

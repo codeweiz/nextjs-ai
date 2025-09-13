@@ -1,5 +1,5 @@
-import {ClassValue, clsx} from "clsx";
-import {twMerge} from "tailwind-merge";
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 /**
  * 合并 CSS 类名的工具函数
@@ -16,5 +16,5 @@ import {twMerge} from "tailwind-merge";
  * cn('text-red-500', { 'font-bold': true, 'italic': false})
  * */
 export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs))
+	return twMerge(clsx(inputs));
 }

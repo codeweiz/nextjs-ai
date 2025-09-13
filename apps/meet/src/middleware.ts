@@ -8,26 +8,26 @@ import { NextRequest, NextResponse } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 export default async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+	const { pathname } = req.nextUrl;
 
-  // 对 /app 开头的路径不做 locale 处理
-  if (pathname.startsWith("/app")) {
-    // 直接放行，不走 next-intl
-    return NextResponse.next();
-  }
+	// 对 /app 开头的路径不做 locale 处理
+	if (pathname.startsWith("/app")) {
+		// 直接放行，不走 next-intl
+		return NextResponse.next();
+	}
 
-  // 对 /auth 开头的路径不做 locale 处理
-  if (pathname.startsWith("/auth")) {
-    // 直接放行，不走 next-intl
-    return NextResponse.next();
-  }
+	// 对 /auth 开头的路径不做 locale 处理
+	if (pathname.startsWith("/auth")) {
+		// 直接放行，不走 next-intl
+		return NextResponse.next();
+	}
 
-  return intlMiddleware(req);
+	return intlMiddleware(req);
 }
 
 export const config = {
-  // 匹配需要 i18n 的路径
-  matcher: [
-    "/((?!api|images|image-proxy|fonts|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.svg|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.webp|.*\\.ico).*)",
-  ],
+	// 匹配需要 i18n 的路径
+	matcher: [
+		"/((?!api|images|image-proxy|fonts|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.svg|.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.gif|.*\\.webp|.*\\.ico).*)",
+	],
 };

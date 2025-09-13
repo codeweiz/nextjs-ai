@@ -18,25 +18,25 @@ const MOBILE_BREAKPOINT = 768;
  * }
  * */
 export function useIsMobile() {
-  // 设置初始状态为 undefined，避免服务端渲染和客户端水化时不匹配
-  const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
+	// 设置初始状态为 undefined，避免服务端渲染和客户端水化时不匹配
+	const [isMobile, setIsMobile] = useState<boolean | undefined>(undefined);
 
-  useEffect(() => {
-    // 创建媒体查询对象，监听屏幕宽度变化
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-    // 屏幕尺寸变化时的处理函数
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    };
+	useEffect(() => {
+		// 创建媒体查询对象，监听屏幕宽度变化
+		const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+		// 屏幕尺寸变化时的处理函数
+		const onChange = () => {
+			setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+		};
 
-    // 监听屏幕尺寸变化事件
-    mql.addEventListener("change", onChange);
-    // 设置初始值
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    // 清理事件监听器
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
+		// 监听屏幕尺寸变化事件
+		mql.addEventListener("change", onChange);
+		// 设置初始值
+		setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+		// 清理事件监听器
+		return () => mql.removeEventListener("change", onChange);
+	}, []);
 
-  // 返回布尔值，将 undefined 转换为 false
-  return !!isMobile;
+	// 返回布尔值，将 undefined 转换为 false
+	return !!isMobile;
 }

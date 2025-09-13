@@ -1,5 +1,4 @@
-import {useEffect, useState} from "react";
-
+import { useEffect, useState } from "react";
 
 /**
  * 组件挂在状态检测钩子
@@ -19,14 +18,14 @@ import {useEffect, useState} from "react";
  * }
  * */
 export function useMounted() {
-    // 初始状态为 false，表示未挂载
-    const [mounted, setMounted] = useState<boolean>(false)
+	// 初始状态为 false，表示未挂载
+	const [mounted, setMounted] = useState<boolean>(false);
 
-    // 监听
-    useEffect(() => {
-        // 组件挂载后设置为 true
-        setMounted(true)
-    }, []);
+	// 监听
+	useEffect(() => {
+		// 组件挂载后设置为 true
+		setMounted(true);
+	}, []);
 
-    return mounted;
+	return mounted;
 }

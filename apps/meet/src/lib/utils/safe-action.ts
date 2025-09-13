@@ -1,4 +1,4 @@
-import {createSafeActionClient} from "next-safe-action";
+import { createSafeActionClient } from "next-safe-action";
 
 /**
  * 安全的 Server Action 客户端
