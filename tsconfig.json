@@ -17,7 +17,8 @@
     "paths": {
       "@microboat/meet/*": ["./apps/meet/src/*"],
       "@microboat/acme/*": ["./apps/acme/*"],
-      "@microboat/common/*": ["./packages/common/src/*"]
+      "@microboat/common/*": ["./packages/common/src/*"],
+      "@microboat/component/*": ["./packages/component/src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
