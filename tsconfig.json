@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@microboat/meet/*": ["./apps/meet/src/*"],
+      "@microboat/dashboard/*": ["./apps/dashboard/src/*"],
       "@microboat/common/*": ["./packages/common/src/*"]
     }
   },

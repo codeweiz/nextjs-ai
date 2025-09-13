@@ -8,8 +8,10 @@
     "node": "22.x"
   },
   "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
+    "build-meet": "turbo build --filter @microboat/meet",
+    "dev-meet": "turbo dev --filter @microboat/meet",
+    "build-dashboard": "turbo build --filter @microboat/dashboard",
+    "dev-dashboard": "turbo dev --filter @microboat/dashboard",
     "lint": "turbo lint",
     "format": "turbo format",
     "clean": "turbo clean",
