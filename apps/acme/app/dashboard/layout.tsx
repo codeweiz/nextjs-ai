@@ -1,8 +1,5 @@
 import SideNav from "@microboat/acme/app/ui/dashboard/sidenav";
 
-// 开启 PPR 功能，自动适应静态路径和动态路由
-export const experimental_ppr = true;
-
 
 export default function Layout({children}: { children: React.ReactNode }) {
     return (
