@@ -39,3 +39,20 @@ export type AppConfig = {
 	// 营销联盟配置
 	affiliate: AffiliateConfig;
 };
+
+// App Config 单例
+let appConfigInstance: AppConfig | null = null;
+
+// 定义全局应用配置
+export function defineAppConfig(appConfig: AppConfig): AppConfig {
+	appConfigInstance = appConfig;
+	return appConfigInstance;
+}
+
+// 获取 App Config，非组件使用
+export function getAppConfig(): AppConfig {
+	if (!appConfigInstance) {
+		throw new Error("缺少 defineAppConfig");
+	}
+	return appConfigInstance;
+}

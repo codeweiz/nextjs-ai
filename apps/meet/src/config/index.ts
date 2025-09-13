@@ -4,8 +4,8 @@ import {
 	PlanInterval,
 } from "@microboat/common/config";
 
-// 全局 app config
-export const appConfig = defineAppConfig({
+// 注册全局 app config
+defineAppConfig({
 	metadata: {
 		name: "AI 会议纪要",
 		title: "AI 会议纪要",
