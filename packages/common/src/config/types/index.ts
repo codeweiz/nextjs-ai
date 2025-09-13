@@ -8,3 +8,10 @@ export * from "./settings-config";
 export * from "./storage-config";
 export * from "./payment-config";
 export * from "./affiliate-config";
+
+import { AppConfig } from "@microboat/common/config";
+
+// 定义全局应用配置
+export function defineAppConfig(appConfig: AppConfig): AppConfig {
+	return appConfig;
+}

@@ -61,10 +61,10 @@ export interface Price {
 	amount: number;
 
 	// 支付时间间隔
-	interval: PlanInterval;
+	interval?: PlanInterval;
 
 	// 试用天数
-	trialPeriodDays: number;
+	trialPeriodDays?: number;
 }
 
 // 支付类型
