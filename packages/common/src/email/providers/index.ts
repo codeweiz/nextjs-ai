@@ -3,11 +3,6 @@ import { PlunkMailProvider } from "./plunk";
 import { MailProvider } from "@microboat/common/email/types";
 import { getAppConfig } from "@microboat/common/config";
 
-/**
- * 邮件服务提供商工厂
- * 根据配置选择并创建合适的邮件服务提供商实例
- */
-
 /** 支持的邮件服务提供商映射表 */
 const providers = {
 	resend: ResendMailProvider,
