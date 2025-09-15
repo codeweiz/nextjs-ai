@@ -11,4 +11,7 @@ export interface I18nConfig {
 
 	// 可用区域
 	locales: Record<string, { name: string }>;
+
+	// messages 目录
+	messageFolder: string;
 }

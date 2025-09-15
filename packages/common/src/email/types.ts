@@ -50,7 +50,7 @@ export interface SendParams {
  * 国际化邮件组件的Props接口
  * 包含语言设置和翻译消息
  */
-export interface i18nEmailProps {
+export interface I18nEmailProps {
 	/** 语言区域设置 */
 	locale: Locale;
 	/** 翻译消息对象 */
