@@ -4,7 +4,7 @@ import {
 	PlanInterval,
 } from "@microboat/common/config";
 
-console.log('执行一次')
+console.log("执行一次");
 
 // 注册全局 app config
 defineAppConfig({
@@ -38,7 +38,7 @@ defineAppConfig({
 			zh: { name: "简体中文" },
 		},
 		localeCookieName: "NEXT_LOCALE",
-		messageFolder: "../../messages"
+		messageFolder: "../../messages",
 	},
 	auth: {
 		enableSocialLogin: true,

@@ -1,10 +1,10 @@
-import {render} from "@react-email/render";
-import type {Locale, Messages} from "next-intl";
-import {ContactForm} from "./contact-form";
-import {EmailVerification} from "./email-verification";
-import {ForgotPassword} from "./forgot-password";
-import {MagicLink} from "./magic-link";
-import {NewsletterSignup} from "./newsletter-signup";
+import { render } from "@react-email/render";
+import type { Locale, Messages } from "next-intl";
+import { ContactForm } from "./contact-form";
+import { EmailVerification } from "./email-verification";
+import { ForgotPassword } from "./forgot-password";
+import { MagicLink } from "./magic-link";
+import { NewsletterSignup } from "./newsletter-signup";
 
 /**
  * 邮件模板映射表
@@ -16,11 +16,11 @@ import {NewsletterSignup} from "./newsletter-signup";
  * - contactForm: 联系表单通知邮件
  */
 export const mailTemplates = {
-    magicLink: MagicLink,
-    forgotPassword: ForgotPassword,
-    newsletterSignup: NewsletterSignup,
-    emailVerification: EmailVerification,
-    contactForm: ContactForm,
+	magicLink: MagicLink,
+	forgotPassword: ForgotPassword,
+	newsletterSignup: NewsletterSignup,
+	emailVerification: EmailVerification,
+	contactForm: ContactForm,
 } as const;
 
 /** 邮件模板键类型 */
@@ -38,37 +38,37 @@ export type TemplateKey = keyof typeof mailTemplates;
  * @returns Promise<{html: string, text: string, subject: string}> 邮件内容对象
  */
 export async function getTemplate<T extends TemplateKey>({
-                                                             templateKey,
-                                                             context,
-                                                             locale,
-                                                             messages
-                                                         }: {
-    templateKey: T;
-    context: Omit<
-        Parameters<(typeof mailTemplates)[T]>[0],
-        "locale" | "messages"
-    >;
-    locale: Locale;
-    messages: Messages;
+	templateKey,
+	context,
+	locale,
+	messages,
+}: {
+	templateKey: T;
+	context: Omit<
+		Parameters<(typeof mailTemplates)[T]>[0],
+		"locale" | "messages"
+	>;
+	locale: Locale;
+	messages: Messages;
 }) {
-    // 获取指定的模板组件
-    const template = mailTemplates[templateKey];
+	// 获取指定的模板组件
+	const template = mailTemplates[templateKey];
 
-    // 使用上下文数据和翻译消息渲染模板
-    const email = template({
-        ...(context as any),
-        locale,
-        messages,
-    });
+	// 使用上下文数据和翻译消息渲染模板
+	const email = template({
+		...(context as any),
+		locale,
+		messages,
+	});
 
-    // 从翻译消息中获取邮件主题
-    const subject =
-        "subject" in messages.mail[templateKey as keyof Messages["mail"]]
-            ? messages.mail[templateKey].subject
-            : "";
+	// 从翻译消息中获取邮件主题
+	const subject =
+		"subject" in messages.mail[templateKey as keyof Messages["mail"]]
+			? messages.mail[templateKey].subject
+			: "";
 
-    // 使用React Email库渲染HTML和纯文本内容
-    const html = await render(email);
-    const text = await render(email, {plainText: true});
-    return {html, text, subject};
+	// 使用React Email库渲染HTML和纯文本内容
+	const html = await render(email);
+	const text = await render(email, { plainText: true });
+	return { html, text, subject };
 }

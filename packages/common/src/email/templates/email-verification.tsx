@@ -1,7 +1,7 @@
-import {Link, Text} from "@react-email/components";
+import { Link, Text } from "@react-email/components";
 import React from "react";
-import {createTranslator} from "use-intl/core";
-import {I18nEmailProps} from "@microboat/common/email/types";
+import { createTranslator } from "use-intl/core";
+import { I18nEmailProps } from "@microboat/common/email/types";
 import EmailLayout from "@microboat/component/email/layout";
 import EmailButton from "@microboat/component/email/email-button";
 
@@ -18,41 +18,41 @@ import EmailButton from "@microboat/component/email/email-button";
  * @returns JSX.Element 邮箱验证邮件组件
  */
 export function EmailVerification({
-                                      name,
-                                      url,
-                                      locale,
-                                      messages,
-                                  }: {
-    /** 用户姓名 */
-    name: string;
-    /** 邮箱验证链接URL */
-    url: string;
+	name,
+	url,
+	locale,
+	messages,
+}: {
+	/** 用户姓名 */
+	name: string;
+	/** 邮箱验证链接URL */
+	url: string;
 } & I18nEmailProps) {
-    // 创建翻译函数，用于获取对应语言的文本
-    const t = createTranslator({
-        locale,
-        messages,
-    });
+	// 创建翻译函数，用于获取对应语言的文本
+	const t = createTranslator({
+		locale,
+		messages,
+	});
 
-    return (
-        <EmailLayout>
-            {/* 欢迎文本，包含用户姓名 */}
-            <Text>{t("mail.emailVerification.body", {name})}</Text>
+	return (
+		<EmailLayout>
+			{/* 欢迎文本，包含用户姓名 */}
+			<Text>{t("mail.emailVerification.body", { name })}</Text>
 
-            {/* 验证邮箱按钮 */}
-            <EmailButton href={url}>
-                {t("mail.emailVerification.confirmEmail")} &rarr;
-            </EmailButton>
+			{/* 验证邮箱按钮 */}
+			<EmailButton href={url}>
+				{t("mail.emailVerification.confirmEmail")} &rarr;
+			</EmailButton>
 
-            {/* 备用链接和说明文字 */}
-            <Text className="text-muted-foreground text-sm">
-                {t("mail.common.openLinkInBrowser")}
-                <Link href={url} className="break-all">
-                    {url}
-                </Link>
-            </Text>
-        </EmailLayout>
-    );
+			{/* 备用链接和说明文字 */}
+			<Text className="text-muted-foreground text-sm">
+				{t("mail.common.openLinkInBrowser")}
+				<Link href={url} className="break-all">
+					{url}
+				</Link>
+			</Text>
+		</EmailLayout>
+	);
 }
 
 export default EmailVerification;

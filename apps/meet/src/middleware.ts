@@ -1,6 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import {routing} from "@microboat/meet/i18n/routing";
+import { routing } from "@microboat/meet/i18n/routing";
 
 // 识别用户的 cookie 或浏览器语言
 // 如果是默认语言（如 en），不加前缀（保持 /）

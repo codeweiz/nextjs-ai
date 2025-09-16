@@ -1,7 +1,7 @@
-import {Link, Text} from "@react-email/components";
+import { Link, Text } from "@react-email/components";
 import React from "react";
-import {createTranslator} from "use-intl/core";
-import {I18nEmailProps} from "@microboat/common/email/types";
+import { createTranslator } from "use-intl/core";
+import { I18nEmailProps } from "@microboat/common/email/types";
 import EmailLayout from "@microboat/component/email/layout";
 import EmailButton from "@microboat/component/email/email-button";
 
@@ -17,39 +17,39 @@ import EmailButton from "@microboat/component/email/email-button";
  * @returns JSX.Element 魔法链接邮件组件
  */
 export function MagicLink({
-                              url,
-                              locale,
-                              messages,
-                          }: {
-    /** 魔法链接登录URL */
-    url: string;
+	url,
+	locale,
+	messages,
+}: {
+	/** 魔法链接登录URL */
+	url: string;
 } & I18nEmailProps) {
-    // 创建翻译函数，用于获取对应语言的文本
-    const t = createTranslator({
-        locale,
-        messages,
-    });
+	// 创建翻译函数，用于获取对应语言的文本
+	const t = createTranslator({
+		locale,
+		messages,
+	});
 
-    return (
-        <EmailLayout>
-            {/* 邮件主体内容 */}
-            <Text>{t("mail.magicLink.body")}</Text>
+	return (
+		<EmailLayout>
+			{/* 邮件主体内容 */}
+			<Text>{t("mail.magicLink.body")}</Text>
 
-            {/* 使用说明 */}
-            <Text>{t("mail.common.useLink")}</Text>
+			{/* 使用说明 */}
+			<Text>{t("mail.common.useLink")}</Text>
 
-            {/* 登录按钮 */}
-            <EmailButton href={url}>{t("mail.magicLink.login")} &rarr;</EmailButton>
+			{/* 登录按钮 */}
+			<EmailButton href={url}>{t("mail.magicLink.login")} &rarr;</EmailButton>
 
-            {/* 备用链接和说明文字 */}
-            <Text className="text-muted-foreground text-sm">
-                {t("mail.common.openLinkInBrowser")}
-                <Link href={url} className="break-all">
-                    {url}
-                </Link>
-            </Text>
-        </EmailLayout>
-    );
+			{/* 备用链接和说明文字 */}
+			<Text className="text-muted-foreground text-sm">
+				{t("mail.common.openLinkInBrowser")}
+				<Link href={url} className="break-all">
+					{url}
+				</Link>
+			</Text>
+		</EmailLayout>
+	);
 }
 
 export default MagicLink;

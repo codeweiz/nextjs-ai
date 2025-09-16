@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { AppProviders } from "@microboat/meet/components/shared/providers";
-import {routing} from "@microboat/meet/i18n/routing";
+import { routing } from "@microboat/meet/i18n/routing";
 
 export default async function LocaleLayout({
 	children,

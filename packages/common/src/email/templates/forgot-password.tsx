@@ -1,7 +1,7 @@
 import { Link, Text } from "@react-email/components";
 import React from "react";
 import { createTranslator } from "use-intl/core";
-import {I18nEmailProps} from "@microboat/common/email/types";
+import { I18nEmailProps } from "@microboat/common/email/types";
 import EmailLayout from "@microboat/component/email/layout";
 import EmailButton from "@microboat/component/email/email-button";
 
@@ -9,7 +9,7 @@ import EmailButton from "@microboat/component/email/email-button";
  * 忘记密码邮件模板
  * 用于发送密码重置链接的邮件
  * 用户忘记密码时可以通过此邮件重置密码
- * 
+ *
  * @param props 组件属性
  * @param props.name 用户姓名
  * @param props.url 密码重置链接URL
