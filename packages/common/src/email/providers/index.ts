@@ -1,7 +1,7 @@
 import { ResendMailProvider } from "./resend";
 import { PlunkMailProvider } from "./plunk";
 import { MailProvider } from "@microboat/common/email/types";
-import { getAppConfig } from "@microboat/common/config";
+import { getConfig } from "@microboat/common/config";
 
 /** 支持的邮件服务提供商映射表 */
 const providers = {
@@ -18,14 +18,15 @@ let mailProviderInstance: MailProvider | null = null;
  *
  * @returns MailProvider 邮件服务提供商实例
  */
-export function getMailProvider(): MailProvider {
+export async function getMailProvider(): Promise<MailProvider> {
 	// 如果已有实例，直接返回
 	if (mailProviderInstance) {
 		return mailProviderInstance;
 	}
 
 	// 根据配置创建对应的邮件服务提供商实例
-	const provider = getAppConfig().mail.provider as keyof typeof providers;
+	const appConfig = await getConfig();
+	const provider = appConfig.mail.provider as keyof typeof providers;
 	mailProviderInstance = new providers[provider]();
 	return mailProviderInstance;
 }

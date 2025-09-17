@@ -1,5 +1,5 @@
 import { MailProvider, SendParams } from "@microboat/common/email/types";
-import { getAppConfig } from "@microboat/common/config";
+import { getConfig } from "@microboat/common/config";
 
 /**
  * Plunk邮件服务提供商实现
@@ -10,8 +10,6 @@ import { getAppConfig } from "@microboat/common/config";
 export class PlunkMailProvider implements MailProvider {
 	/** Plunk API密钥 */
 	private apiKey: string;
-	/** 发件人邮箱地址 */
-	private from: string;
 
 	/**
 	 * 构造函数
@@ -20,7 +18,6 @@ export class PlunkMailProvider implements MailProvider {
 	constructor() {
 		// 从环境变量获取API密钥
 		const apiKey = process.env.PLUNK_API_KEY;
-		const { from } = getAppConfig().mail;
 
 		// 验证必需的环境变量
 		if (!apiKey) {
@@ -28,7 +25,6 @@ export class PlunkMailProvider implements MailProvider {
 		}
 
 		this.apiKey = apiKey;
-		this.from = from;
 	}
 
 	/**
@@ -36,6 +32,8 @@ export class PlunkMailProvider implements MailProvider {
 	 * @param params 邮件发送参数
 	 */
 	async sendEmail(params: SendParams): Promise<void> {
+		const appConfig = await getConfig();
+
 		// 调用Plunk API发送邮件
 		const response = await fetch("https://api.useplunk.com/v1/send", {
 			method: "POST",
@@ -46,7 +44,7 @@ export class PlunkMailProvider implements MailProvider {
 			},
 			body: JSON.stringify({
 				to: params.to,
-				from: this.from,
+				from: appConfig.mail.from,
 				subject: params.subject,
 				body: params.html, // Plunk使用'body'字段作为HTML内容
 				text: params.text,

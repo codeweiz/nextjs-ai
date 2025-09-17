@@ -20,7 +20,7 @@ export const subscribeToNewsletter = actionClient
 	.inputSchema(newsletterSchema)
 	.outputSchema(z.void())
 	.action(async ({ parsedInput: { email } }) => {
-		const mailProvider = getMailProvider();
+		const mailProvider = await getMailProvider();
 		await mailProvider.subscribe(email);
 	});
 
@@ -32,7 +32,7 @@ export const unsubscribeFromNewsletter = actionClient
 	.inputSchema(newsletterSchema)
 	.outputSchema(z.void())
 	.action(async ({ parsedInput: { email } }) => {
-		const mailProvider = getMailProvider();
+		const mailProvider = await getMailProvider();
 		await mailProvider.unsubscribe(email);
 	});
 
@@ -44,6 +44,6 @@ export const isSubscribedToNewsletter = actionClient
 	.inputSchema(newsletterSchema)
 	.outputSchema(z.boolean())
 	.action(async ({ parsedInput: { email } }) => {
-		const mailProvider = getMailProvider();
+		const mailProvider = await getMailProvider();
 		return await mailProvider.isSubscribed(email);
 	});

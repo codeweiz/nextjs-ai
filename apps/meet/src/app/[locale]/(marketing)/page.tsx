@@ -5,10 +5,10 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@microboat/component/ui";
-import { getAppConfig } from "@microboat/common/config";
+import { getConfig } from "@microboat/common/config";
 
-export default function Home() {
-	const appConfig = getAppConfig();
+export default async function Home() {
+	const appConfig = await getConfig();
 	console.log("Home, app config: ", appConfig);
 
 	const items = [

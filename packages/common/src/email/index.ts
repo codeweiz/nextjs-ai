@@ -4,7 +4,7 @@ import {
 	mailTemplates,
 	TemplateKey,
 } from "@microboat/common/email/templates";
-import { getAppConfig } from "@microboat/common/config";
+import { getConfig } from "@microboat/common/config";
 import { getMailProvider } from "@microboat/common/email/providers";
 
 /**
@@ -45,7 +45,8 @@ export async function sendEmail<T extends TemplateKey>(
 	),
 ) {
 	// 解构参数，设置默认语言
-	const { to, locale = getAppConfig().i18n.defaultLocale, messages } = params;
+	const appConfig = await getConfig();
+	const { to, locale = appConfig.i18n.defaultLocale, messages } = params;
 
 	let html: string;
 	let text: string;
@@ -73,7 +74,8 @@ export async function sendEmail<T extends TemplateKey>(
 
 	try {
 		// 调用邮件提供商发送邮件
-		await getMailProvider().sendEmail({
+		const mailProvider = await getMailProvider();
+		await mailProvider.sendEmail({
 			to,
 			subject,
 			text,

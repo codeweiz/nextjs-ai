@@ -18,7 +18,8 @@
       "@microboat/meet/*": ["./apps/meet/src/*"],
       "@microboat/acme/*": ["./apps/acme/*"],
       "@microboat/common/*": ["./packages/common/src/*"],
-      "@microboat/component/*": ["./packages/component/src/*"]
+      "@microboat/component/*": ["./packages/component/src/*"],
+      "@/app-config": ["./apps/meet/src/config/index.ts"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

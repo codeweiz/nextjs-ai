@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { MailProvider, SendParams } from "@microboat/common/email/types";
-import { getAppConfig } from "@microboat/common/config";
+import { getConfig } from "@microboat/common/config";
 
 /**
  * Resend邮件服务提供商实现
@@ -10,8 +10,6 @@ import { getAppConfig } from "@microboat/common/config";
 export class ResendMailProvider implements MailProvider {
 	/** Resend SDK实例 */
 	private resend: Resend;
-	/** 发件人邮箱地址 */
-	private from: string;
 	/** Resend受众ID，用于管理邮件列表订阅 */
 	private audienceId?: string;
 
@@ -22,7 +20,6 @@ export class ResendMailProvider implements MailProvider {
 	constructor() {
 		// 从环境变量获取API密钥
 		const resendApiKey = process.env.RESEND_API_KEY;
-		const { from } = getAppConfig().mail;
 
 		// 验证必需的环境变量
 		if (!resendApiKey) {
@@ -31,7 +28,7 @@ export class ResendMailProvider implements MailProvider {
 
 		// 初始化Resend客户端
 		this.resend = new Resend(resendApiKey);
-		this.from = from;
+
 		// 受众ID用于邮件列表管理，可选配置
 		this.audienceId = process.env.RESEND_AUDIENCE_ID;
 	}
@@ -41,9 +38,11 @@ export class ResendMailProvider implements MailProvider {
 	 * @param params 邮件发送参数
 	 */
 	async sendEmail(params: SendParams): Promise<void> {
+		const appConfig = await getConfig();
+
 		// 调用Resend API发送邮件
 		const { data, error } = await this.resend.emails.send({
-			from: this.from,
+			from: appConfig.mail.from,
 			to: params.to,
 			subject: params.subject,
 			html: params.html,

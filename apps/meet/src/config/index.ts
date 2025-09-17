@@ -1,13 +1,6 @@
-import {
-	defineAppConfig,
-	PaymentType,
-	PlanInterval,
-} from "@microboat/common/config";
+import { AppConfig, PaymentType, PlanInterval } from "@microboat/common/config";
 
-console.log("执行一次");
-
-// 注册全局 app config
-defineAppConfig({
+export const appConfig: AppConfig = {
 	metadata: {
 		name: "AI 会议纪要",
 		title: "AI 会议纪要",
@@ -111,4 +104,4 @@ defineAppConfig({
 			id: process.env.NEXT_PUBLIC_AFFILIATE_AFFONSO_ID || "",
 		},
 	},
-});
+};
