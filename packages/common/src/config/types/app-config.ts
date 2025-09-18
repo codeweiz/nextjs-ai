@@ -43,6 +43,6 @@ export type AppConfig = {
 
 // 异步获取 appConfig
 export const getConfig = cache(async (): Promise<AppConfig> => {
-	const { appConfig } = await import("@/app-config");
+	const { appConfig } = await import("@microboat/app-config");
 	return appConfig;
 });

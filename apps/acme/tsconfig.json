@@ -8,7 +8,15 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@microboat/acme/*": ["./*"],
+      "@microboat/app-config": ["./app/config/index.ts"],
+
+      "@microboat/common/*": ["../../packages/common/src/*"],
+      "@microboat/component/*": ["../../packages/component/src/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

@@ -8,7 +8,15 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@microboat/meet/*": ["src/*"],
+      "@microboat/app-config": ["src/config/index.ts"],
+
+      "@microboat/common/*": ["../../packages/common/src/*"],
+      "@microboat/component/*": ["../../packages/component/src/*"]
+    }
   },
   "include": [
     "src/**/*",

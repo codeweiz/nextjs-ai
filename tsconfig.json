@@ -15,11 +15,9 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@microboat/meet/*": ["./apps/meet/src/*"],
-      "@microboat/acme/*": ["./apps/acme/*"],
+      "@microboat/app-config": ["./packages/common/src/config/example.app-config.ts"],
       "@microboat/common/*": ["./packages/common/src/*"],
       "@microboat/component/*": ["./packages/component/src/*"],
-      "@/app-config": ["./apps/meet/src/config/index.ts"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],
