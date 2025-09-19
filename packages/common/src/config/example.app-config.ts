@@ -1,5 +1,6 @@
 import { AppConfig, PaymentType, PlanInterval } from "@microboat/common/config";
 
+
 export const appConfig: AppConfig = {
 	metadata: {
 		name: "EXAMPLE",
